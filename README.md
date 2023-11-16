@@ -4,6 +4,7 @@
 ## 🖥️ 프로젝트 소개
 분리의신은 일상 생활 속에서 발생하는 잘못된 분리배출을 알려주고, 간편한 검색을 통해 올바른 배출 방법을 안내하는 웹사이트입니다.
 <br>
+<img width="100%" src="https://github.com/audgns722/recycle-project/blob/main/logic-recyclegod.jpg?raw=true"/>
 
 ## 🕰️ 개발 기간 및 작업 관리
 * 개발 기간: 2023년 10월 11일부터 2023년 11월 16일까지
