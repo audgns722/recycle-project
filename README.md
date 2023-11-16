@@ -29,7 +29,7 @@
 ### ⚙️ 개발 환경
   ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
 ## 📌 주요 기능
-#### 로그인 - <a href="" >상세보기 - 이동</a>
+#### 로그인 - <a href="http://audgns722.dothome.co.kr/teamplemain/php/login/login.php" target="_blank">상세보기 - 이동</a>
 - DB값 검증 : 사용자가 입력한 ID와 비밀번호를 DB에서 확인하여 유효성을 검증
 - ID찾기, PW찾기 : 사용자가 ID나 비밀번호를 잊어버린 경우를 대비해, 각각의 정보를 찾을 수 있는 기능을 제공
 - 세션(Session) 생성 : 세션을 생성하여 사용자의 로그인 상태를 유지하고, 로그인 여부를 확인
