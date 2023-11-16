@@ -1,9 +1,14 @@
-# 분리의신
+# 분리의 신(God of Segregation)
+<img width="20%" src="https://github.com/audgns722/recycle-project/blob/main/assets/img/logo2.jpg?raw=true"/>
 
 
 ## 🖥️ 프로젝트 소개
 분리의신은 일상 생활 속에서 발생하는 잘못된 분리배출을 알려주고, 간편한 검색을 통해 올바른 배출 방법을 안내하는 웹사이트입니다.
 <br>
+<div align="center"><img style="border-radius:15px" width="70%" src="https://github.com/audgns722/recycle-project/blob/main/logic-recyclegod.jpg?raw=true"/></div>
+
+ ### [사이트 바로가기📎](http://audgns722.dothome.co.kr/teamplemain/firstmain.php)
+ ### [INDEX 바로가기📎](http://audgns722.dothome.co.kr/teamplemain/index.html)
 
 ## 🕰️ 개발 기간 및 작업 관리
 * 개발 기간: 2023년 10월 11일부터 2023년 11월 16일까지
@@ -20,14 +25,7 @@
    - 기능
 
 ### ⚙️ 개발 환경
- - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
- - ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
- - ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
- - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
- - ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
- - ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
- - ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
- - ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
 ## 📌 주요 기능
 #### 로그인 - <a href="" >상세보기 - 이동</a>
 - DB값 검증 : 사용자가 입력한 ID와 비밀번호를 DB에서 확인하여 유효성을 검증
