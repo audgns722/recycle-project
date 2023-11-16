@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <style>
+        .board__nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .board__nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F5F5F2;
+            border-radius: 50px;
+            width: 30%;
+            height: 50px;
+        }
+        .board__search .right {
+            position: relative;
+        }
+
+        .board__nav li a {
+            font-size: 0.8rem;
+            margin: 0 25px 0 25px;
+        }
+
+        .board__nav:active {
+            text-decoration: underline;
+        }
+
+        .board__table td {
+            padding: 25px 5px;
+            border-bottom: 1px solid #b3b3b3;
+            text-align: center;
+        }
+
+        .board__search .left {
+            margin-left: 30px;
+            font-size: 0.8rem;
+        }
+
+        .btn__style2 {
+            width: 100px;
+            height: 39px;
+            background-color: #285A5B;
+            font-size: 0.9rem;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .board__search .right a {
+            width: 100px;
+            height: 43px;
+            color: var(--white);
+            font-size: 0.9rem;
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+        }
+
+        .board__table td {
+            padding: 25px 5px;
+            border-bottom: 1px solid #b3b3b3;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .board__table td.active {
+            font-weight: 600;
+            color: #FFB84D;
+        }
+
+        .header__search input {
+            width: 80%;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #F2F1EC;
+            color: #cfc4c4ab;
+            border: none;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.7rem;
+        }
+        @media(max-width:1100px){
+            .board__nav ul {
+                width: 45%;
+            }
+            .board__search .left {
+                display: none;
+            }
+            .board__search {
+                justify-content: flex-end;
+            }
+        }
+        @media(max-width:800px){
+            
+            
+            .board__title {
+                margin-top: 15px;
+            }
+            .board__inner {
+                padding: 40px 0;
+            }
+        }
+        @media(max-width:660px){
+            .board__nav ul {
+                width: 70%;
+            }
+            .board__search .right select {
+                width: 100px;
+                display: flex;
+            }
+            .btn__write {
+                position: absolute;
+                top: -5px;
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <a class="header__logo" href="../main.html">
+            <h1></h1>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="../main.html">
+                        <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 22L2 22" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M2 11L10.1259 4.49931C11.2216 3.62279 12.7784 3.62279 13.8741 4.49931L22 11"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path opacity="0.5"
+                                d="M15.5 5.5V3.5C15.5 3.22386 15.7239 3 16 3H18.5C18.7761 3 19 3.22386 19 3.5V8.5"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M4 22V9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M20 22V9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path opacity="0.5"
+                                d="M15 22V17C15 15.5858 15 14.8787 14.5607 14.4393C14.1213 14 13.4142 14 12 14C10.5858 14 9.87868 14 9.43934 14.4393C9 14.8787 9 15.5858 9 17V22"
+                                stroke="#1C274C" stroke-width="1.5" />
+                            <path opacity="0.5"
+                                d="M14 9.5C14 10.6046 13.1046 11.5 12 11.5C10.8954 11.5 10 10.6046 10 9.5C10 8.39543 10.8954 7.5 12 7.5C13.1046 7.5 14 8.39543 14 9.5Z"
+                                stroke="#1C274C" stroke-width="1.5" />
+                        </svg></a></li>
+                <li><a href="../../html/subboard/subpage.html">분리배출</a></li>
+                <li><a href="../../html/subboard/subpage2.html">탄소발자국</a></li>
+                <li><a href="../../html/board/notice.html">커뮤니티</a></li>
+                <li><a href="../subboard/makers.html">만든사람들</a></li>
+            </ul>
+        </nav>
+        <div class="header__search">
+            <input type="text" placeholder="1. 용기분리배출">
+            <span class="search__zoom"></span>
+        </div>
+        <div class="header__login">
+            <button class="login__btn">
+                <span><a href="login/login.html"></a><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.5"
+                            d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"
+                            stroke="#1C274C" stroke-width="1.5" />
+                        <path
+                            d="M11 12C11 13.3807 9.88071 14.5 8.5 14.5C7.11929 14.5 6 13.3807 6 12C6 10.6193 7.11929 9.5 8.5 9.5C9.88071 9.5 11 10.6193 11 12Z"
+                            stroke="#1C274C" stroke-width="1.5" />
+                        <path d="M11 12H15.5M15.5 12H17C17.5523 12 18 12.4477 18 13V14M15.5 12V13.5" stroke="#1C274C"
+                            stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                <a href="../../html/login/login.html">Login</a>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- main -->
+    <main id="main">
+        <div class="board__title container">
+            <h1>Board</h1>
+        </div>
+        <section class="board__inner container">
+            <div class="board__nav">
+                <ul>
+                    <li><a href="../board/notice.html">공지사항</a></li>
+                    <li><a href="../board/question.html" class="active">질문하기</a></li>
+                    <li><a href="../board/question2.html">1:1문의</a></li>
+                </ul>
+            </div>
+            <div class="board__search">
+                <div class="left">
+                    * 분리배출이 전하는 최신 공지입니다.
+                </div>
+                <div class="right">
+                    <form action="boardSearch.html" name="boardSearch" method="get">
+                        <fieldset>
+                            <legend class="blind">게시판 검색 영역</legend>
+                            <select name="searchOption" id="searchOption">
+                                <option value="title">제목</option>
+                                <option value="content">내용</option>
+                                <option value="name">등록자</option>
+                            </select>
+                            <input type="search" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요!"
+                                >
+                            <button type="submit" class="btn__style2">검 색</button>
+                            <button><a href="../board/write.html" class="btn__write btn__style2">글쓰기</a></button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="board__table">
+                <table>
+                    <colgroup>
+                        <col style="width: 10%;">
+                        <col>
+                        <col style="width: 10%;">
+                        <col style="width: 15%;">
+                        <col style="width: 10%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>등록자</th>
+                            <th>등록일</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="active"></i>공지</td>
+                            <td><a href="#">서로서로 예쁜말로 질문합시다.</a></td>
+                            <td>관리자</td>
+                            <td>2023-10-00</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><a href="#">병뚜껑 분리 배출은 어떻게 해요?</a></td>
+                            <td>이명훈</td>
+                            <td>2023-10-00</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><a href="#">질문합니다.</a></td>
+                            <td>김승우</td>
+                            <td>2023-10-00</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><a href="#">닭뼈는 일반쓰레기가 맞는건가요?</a></td>
+                            <td>김희진</td>
+                            <td>2023-10-00</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">분리 배출 공식 웹페이지 공지사항입니다.</a></td>
+                            <td>김승우</td>
+                            <td>2023-10-00</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="#">분리 배출 공식 웹페이지 공지사항입니다.</a></td>
+                            <td>이명훈</td>
+                            <td>2023-10-00</td>
+                            <td>100</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="board__pages">
+                <ul>
+                    <li class="first"><a href="#"><svg width="30px" height="25px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.6772 19.5377C12.9742 19.8265 13.449 19.8198 13.7377 19.5228C14.0265 19.2258 14.0198 18.751 13.7228 18.4623L12.6772 19.5377ZM6 12L5.47719 11.4623C5.33195 11.6035 5.25 11.7974 5.25 12C5.25 12.2026 5.33195 12.3965 5.47719 12.5377L6 12ZM13.7228 5.53775C14.0198 5.24901 14.0265 4.77418 13.7377 4.47719C13.449 4.1802 12.9742 4.17351 12.6772 4.46225L13.7228 5.53775ZM17.4772 18.3708C17.7742 18.6595 18.249 18.6528 18.5378 18.3558C18.8265 18.0588 18.8198 17.584 18.5228 17.2952L17.4772 18.3708ZM12 12L11.4772 11.4622C11.332 11.6035 11.25 11.7974 11.25 12C11.25 12.2026 11.332 12.3965 11.4772 12.5378L12 12ZM18.5228 6.70476C18.8198 6.41603 18.8265 5.9412 18.5378 5.64421C18.249 5.34721 17.7742 5.34051 17.4772 5.62924L18.5228 6.70476ZM13.7228 18.4623L6.52281 11.4623L5.47719 12.5377L12.6772 19.5377L13.7228 18.4623ZM6.52281 12.5377L13.7228 5.53775L12.6772 4.46225L5.47719 11.4623L6.52281 12.5377ZM18.5228 17.2952L12.5228 11.4622L11.4772 12.5378L17.4772 18.3708L18.5228 17.2952ZM12.5228 12.5378L18.5228 6.70476L17.4772 5.62924L11.4772 11.4622L12.5228 12.5378Z"
+                                    fill="#000000" />
+                            </svg></a></li>
+                    <li class="prev"><a href="#"><svg width="30px" height="25px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 7L10 12L15 17" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li class="next"><a href="#"><svg width="30px" height="25px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 7L15 12L10 17" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></a></li>
+                    <li class="last"><a href="#"><svg width="30px" height="25px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.2772 18.4623C9.9802 18.751 9.97351 19.2258 10.2623 19.5228C10.551 19.8198 11.0258 19.8265 11.3228 19.5377L10.2772 18.4623ZM18 12L18.5228 12.5377C18.6681 12.3965 18.75 12.2026 18.75 12C18.75 11.7974 18.6681 11.6035 18.5228 11.4623L18 12ZM11.3228 4.46225C11.0258 4.17351 10.551 4.1802 10.2623 4.47719C9.97351 4.77418 9.9802 5.24901 10.2772 5.53775L11.3228 4.46225ZM5.47721 17.2952C5.18021 17.584 5.17351 18.0588 5.46224 18.3558C5.75097 18.6528 6.2258 18.6595 6.52279 18.3708L5.47721 17.2952ZM12 12L12.5228 12.5378C12.668 12.3965 12.75 12.2026 12.75 12C12.75 11.7974 12.668 11.6035 12.5228 11.4622L12 12ZM6.52279 5.62924C6.2258 5.34051 5.75097 5.34721 5.46224 5.64421C5.17351 5.9412 5.18021 6.41603 5.47721 6.70476L6.52279 5.62924ZM11.3228 19.5377L18.5228 12.5377L17.4772 11.4623L10.2772 18.4623L11.3228 19.5377ZM18.5228 11.4623L11.3228 4.46225L10.2772 5.53775L17.4772 12.5377L18.5228 11.4623ZM6.52279 18.3708L12.5228 12.5378L11.4772 11.4622L5.47721 17.2952L6.52279 18.3708ZM12.5228 11.4622L6.52279 5.62924L5.47721 6.70476L11.4772 12.5378L12.5228 11.4622Z"
+                                    fill="#000000" />
+                            </svg></a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- footer -->
+    <footer id="footer" role="contentinfo">
+        <div class="footer__inner">
+            <div class="footerwrap">
+                <ul>
+                    <li><img src="../../assets/img/logo2.jpg" alt="sitelogo"></li>
+                    <li>
+                        <h2>CUSTOMER CENTER</h2>
+                        <p>전화보다 빠른 궁금증 해결</p>
+                    </li>
+                    <li>
+                        <h2>NOTICE +</h2>
+                        <p>종량제 봉투 가격 인상 공지<br>
+                            2025 대기업 탄소 저감 실적 의무화 실시예정</p>
+                    </li>
+                    <li>
+                        <h2>about 분리배출</h2>
+                        <p>주소 : 서울특별시 구로구 구로동 237-14<br>
+                            통신판매업 신고 : 2015-서울구로-1525</p>
+                    </li>
+                    <li>
+                        <div class="footer__sns">
+                            <h1>SOCIAL</h1>
+                            <div>
+                                <img src="../../assets/img/Facebook.png" alt="Facebook">
+                                <img src="../../assets/img/Instagram.png" alt="Instagram">
+                                <img src="../../assets/img/messanger.png" alt="messanger">
+                                <img src="../../assets/img/Whatsapp.png" alt="Whatsapp">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP 02</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://webfontworld.github.io/BMHannaAir/BMHannaAir.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: var(--main-nanum);
+            font-size: 18px;
+            color: #000;
+            text-decoration-line: none;
+            padding: 0;
+        }
+
+        @media (max-width:800px) {
+            * {
+                font-size: 14px;
+            }
+        }
+
+        body {
+            background-image: url(../teamplemain/assets/img/Evergreen\ wallpaper.jfif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            height: 100%;
+        }
+
+        #wrap {
+            max-width: 1720px;
+            width: 95%;
+            margin: 50px auto;
+        }
+
+
+        #wrap span {
+            letter-spacing: -2px;
+            background-color: #009688;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            color: #fff;
+            margin: 0 auto;
+            padding: 10px 30px;
+        }
+
+        #wrap h1 {
+            font-size: 50px;
+            font-family: 'BMHannaAir';
+            margin-bottom: 40px;
+        }
+
+        #wrap .text {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #wrap .link {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        #wrap .link a {
+            display: none;
+            margin: 5px 0;
+            width: 100px;
+            background-color: #009688;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 1.25rem;
+            color: #fff;
+
+        }
+        #wrap .text h3 {
+            background-color: #12cdbc;
+            width: 200px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 10px 0;
+        }
+        .menuWrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .menu {
+            width: 32%;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 2.5px solid #009688;
+            line-height: 2;
+            border-radius: 10px;
+        }
+
+        .menu>li {
+            margin-top: 40px;
+            display: block;
+        }
+
+        .main h2,
+        .cate h2 {
+            border-left: 2px solid #000;
+            padding-left: 10px;
+        }
+
+
+        .menu>li span {
+            border-bottom: 1px solid #000;
+            font-size: 30px;
+        }
+
+        .menu>li>ul {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .menu>li>ul>li {
+            list-style-type: decimal;
+            list-style-position: inside;
+            margin-left: 20px;
+        }
+
+        .menu>li>ul>li:hover {
+            transition: all 0.5s;
+            transform: translate(-200px, 0);
+            transform: scale(1.1);
+        }
+        @media (max-width:800px) {
+            #wrap {
+                width: 100%;
+            }
+            .menuWrap {
+                display: block;
+            }
+            .menu {
+                width: 100%
+            }
+            #wrap span {
+                line-height: 2;
+            }
+            .menu>li {
+                display: flex;
+                justify-content: space-between;
+            }
+            .menu>li>ul {
+                width: 48%;
+                display: flex;
+                flex-direction: column;
+
+            }
+            .menu>li>ul>li {
+                margin-left: 10px;
+            }
+            #wrap .link a {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>분리의 신</h1>
+        <div class="text">
+            <div class="link">
+                <a href="#Figma">디자인</a>
+                <a href="#Coding">코딩</a>
+                <a href="#Php">개발</a>
+            </div>
+            <h3>조원 : 김희진 / 이명훈</h3>
+        </div>
+
+        <div class="menuWrap">
+            <ul class="menu">
+                <span id="Figma">디자인(Figma)</span>
+                <li>
+                    <ul class="main">
+                        <h2>메인.로그인.회원가입</h2>
+                        <li><a href="main/main.php" target="_blank">첫 메인페이지</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=452%3A585&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">두번째 메인 페이지</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=400%3A1572&mode=design&t=1FWyasRe1euQcEFg-1"
+                                target="_blank">회원가입 : 이용약관</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=397%3A1842&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">회원가입 : 정보입력</a></li>
+                        <li><a href="join/joinResult.php" target="_blank">회원가입 : 가입완료</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=397%3A1921&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">로그인</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인 실패</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=400%3A1156&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">로그인 : 아이디 찾기</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=400%3A1225&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">로그인 : 아이디 찾기 완료</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=400%3A1192&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">로그인 : 비밀번호 찾기</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=400%3A1352&mode=design&t=o3uxpKj2ZDNIUR8b-1"
+                                target="_blank">로그인 : 비밀번호 찾기 완료</a></li>
+                    </ul>
+                    <ul class="cate">
+                        <h2>게시판.퀴즈.기타</h2>
+                        <li><a href="blog/blogCate.php" target="_blank">카테고리</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=446%3A584&mode=design&t=aIJcT4UF8LcopLAl-1"
+                                target="_blank">서브페이지1</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=400%3A1416&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">서브페이지2</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=397%3A1061&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">퀴즈페이지</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=397%3A1321&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">게시판메인</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=427%3A628&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">게시판 글보기(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=397%3A1595&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">게시판 글작성하기(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=397%3A1595&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">게시판 글수정하기</a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=464%3A1194&mode=design&t=isk8h3su1pRHOk7V-1"
+                                target="_blank">기타 : 탄소발자국 </a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=464%3A1219&mode=design&t=isk8h3su1pRHOk7V-1"
+                                target="_blank">기타 : 만든사람들 </a></li>
+                        <li><a href="https://www.figma.com/file/kQhvPz4C8lQq2gVF2OeFnK/%EB%AA%85%ED%9B%88?type=design&node-id=423%3A586&mode=design&t=MVcz7IiYq6jXH1d6-1"
+                                target="_blank">마이페이지 </a></li>
+
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <span id="Coding">코딩(HTML/CSS)</span>
+                <li>
+                    <ul class="main">
+                        <h2>메인.로그인.회원가입</h2>
+                        <li><a href="main/main.php" target="_blank">첫 메인페이지</a></li>
+                        <li><a href="main/main.php" target="_blank">두번째 메인 페이지</a></li>
+                        <li><a href="join/joinAgree.php" target="_blank">회원가입 : 이용약관</a></li>
+                        <li><a href="join/joinInsert.php" target="_blank">회원가입 : 정보입력</a></li>
+                        <li><a href="join/joinResult.php" target="_blank">회원가입 : 가입완료</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인 실패</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인 : 아이디 찾기</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인 : 아이디 찾기 완료</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인 : 비밀번호 찾기 완료</a></li>
+                        <li><a href="login/login.php" target="_blank">로그인 : 비밀번호 찾기 완료</a></li>
+                    </ul>
+                    <ul class="cate">
+                        <h2>게시판.퀴즈.기타</h2>
+                        <li><a href="blog/blogCate.php" target="_blank">카테고리</a></li>
+                        <li><a href="blog/blogCate.php" target="_blank">서브페이지1</a></li>
+                        <li><a href="blog/blogCate.php" target="_blank">서브페이지2</a></li>
+                        <li><a href="blog/blogView.php" target="_blank">퀴즈페이지</a></li>
+                        <li><a href="blog/blogWrite.php" target="_blank">게시판 글보기(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="blog/blogWrite.php" target="_blank">게시판 글작성하기(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="blog/blogWrite.php" target="_blank">게시판 글수정하기</a></li>
+                        <li><a href="blog/blogWrite.php" target="_blank">기타 : 탄소발자국 </a></li>
+                        <li><a href="blog/blogWrite.php" target="_blank">기타 : 만든사람들 </a></li>
+                    </ul>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            <ul class="menu">
+                <span id="Php">개발(PHP)</span>
+                <li>
+                    <ul class="main">
+                        <h2>메인.로그인.회원가입</h2>
+                        <li><a href="./firstmain.php" target="_blank">첫 메인페이지</a></li>
+                        <li><a href="./php/main/main.php" target="_blank">두번째 메인 페이지</a></li>
+                        <li><a href="./php/join/joinAgree.php" target="_blank">회원가입 : 이용약관</a></li>
+                        <li><a href="./php/join/joinInsert.php" target="_blank">회원가입 : 정보입력</a></li>
+                        <li><a href="./php/join/joinResult.php" target="_blank">회원가입 : 가입완료</a></li>
+                        <li><a href="./php/login/login.php" target="_blank">로그인</a></li>
+                        <li><a href="./php/join/joinId.php" target="_blank">로그인 : 아이디 찾기</a></li>
+                        <li><a href="./php/join/idfindcom.php" target="_blank">로그인 : 아이디 찾기 완료</a></li>
+                        <li><a href="./php/join/passfindcom.php" target="_blank">로그인 : 비밀번호 찾기 완료</a></li>
+                        <li><a href="./php/join/joinpass.php" target="_blank">로그인 : 비밀번호 찾기 완료</a></li>
+                    </ul>
+                    <ul class="cate">
+                        <h2>게시판.퀴즈.기타</h2>
+                        <li><a href="./php/subcate/subcate.php" target="_blank">카테고리</a></li>
+                        <li><a href="./php/subboard/submain.php" target="_blank">서브페이지1</a></li>
+                        <li><a href="#" target="_blank">퀴즈페이지</a></li>
+                        <li><a href="./php/board/board.php" target="_blank">게시판 글보기(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="./php/board/boardCommentWrite.php" target="_blank">게시판 글작성하기(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="./php/board/boardWriteSave.php" target="_blank">게시판 글저장(공지.질문.커뮤.댓글)</a></li>
+                        <li><a href="./php/board/boardModify.php" target="_blank">게시판 글수정하기</a></li>
+                        <li><a href="./php/board/boardModifySave.php" target="_blank">게시판 글수정저장</a></li>
+                        <li><a href="./php/subboard/footprint.php" target="_blank">기타 : 탄소발자국 </a></li>
+                        <li><a href="./php/subboard/makers.php" target="_blank">기타 : 만든사람들 </a></li>
+                        <li><a href="./php/mypage/mypage.php" target="_blank">마이페이지 </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

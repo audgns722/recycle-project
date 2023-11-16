@@ -1,0 +1,53 @@
+:root {
+    --main-nexon: "NexonLv1Gothic";
+    --main-nanum: "NanumSquareNeo";
+    --navfont: "NexonMaplestory";
+    --main-woori: "Wooridaum";
+    --main-ns: "NanumSquare";
+    --main-Jalnan : "Jalnan";
+    /* --main-gmark : "GmarketSans"; */
+    
+    --primary-color: #eeeeee;
+
+    --black: #000;
+    --white: #fff;
+    --red: #f00;
+
+
+    --mycolor1: #285A5B;
+    --mycolor2: #081012;
+    --mycolor3: #EF8A84;
+    --mycolor4: #4D8FC3;
+
+
+    --black100: #333;
+    --black200: #555;
+    --black300: #777;
+    --black400: #999;
+    --black500: #d7d7d7;
+    --black600: #e8e8e8;
+
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+/* intro__inner var */
+:root {
+    --background-dark: #2d3548;
+    --text-light: rgba(255, 255, 255, 0.6);
+    --text-lighter: rgba(255, 255, 255, 0.9);
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 64px;
+    --width-container: 1200px;
+}

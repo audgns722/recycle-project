@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <style>
+        .slider {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background: #777;
+            overflow: hidden;
+        }
+
+        .slider__wrap {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            transform: translateX(100vw);
+            top: 0%;
+            left: 0;
+            right: auto;
+            overflow: hidden;
+            transition: transform 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transform-origin: 0% 50%;
+            transition-delay: 450ms;
+            opacity: 0;
+        }
+
+        .slider__wrap--hacked {
+            opacity: 1;
+        }
+
+        .slider__back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: auto 100%;
+            background-position: center;
+            background-repeat: none;
+            transition: filter 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        .slider__inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0%;
+            background-size: auto 133.3333%;
+            background-position: center;
+            background-repeat: none;
+            transform: scale(0.75);
+            transition: transform 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86), box-shadow 450ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 450ms step-end;
+            opacity: 0;
+            box-shadow: 0 3vh 3vh rgba(0, 0, 0, 0);
+            padding: 15vh;
+            box-sizing: border-box;
+        }
+
+        .slider__content {
+            position: relative;
+            top: 50%;
+            width: auto;
+            transform: translateY(-50%);
+            color: white;
+            font-family: "Heebo", sans-serif;
+            opacity: 0;
+            transition: opacity 450ms;
+        }
+
+        .slider__content h1 {
+            font-weight: 900;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 0.75vh;
+            pointer-events: none;
+            text-shadow: 0 0.375vh 0.75vh rgba(0, 0, 0, 0.1);
+        }
+
+        .slider__content a {
+            cursor: pointer;
+            font-size: 2.4vh;
+            letter-spacing: 0.3vh;
+            font-weight: 100;
+            position: relative;
+        }
+
+        .slider__content a:after {
+            content: "";
+            display: block;
+            width: 9vh;
+            background: white;
+            height: 1px;
+            position: absolute;
+            top: 50%;
+            left: 6vh;
+            transform: translateY(-50%);
+            transform-origin: 0% 50%;
+            transition: transform 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        .slider__content a:before {
+            content: "";
+            border-top: 1px solid white;
+            border-right: 1px solid white;
+            display: block;
+            width: 1vh;
+            height: 1vh;
+            transform: translateX(0) translateY(-50%) rotate(45deg);
+            position: absolute;
+            font-family: "Heebo", sans-serif;
+            font-weight: 100;
+            top: 50%;
+            left: 15vh;
+            transition: transform 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        .slider__content a:hover:after {
+            transform: scaleX(1.5);
+            transition: transform 1200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        .slider__content a:hover:before {
+            transform: translateX(6vh) translateY(-50%) rotate(45deg);
+            transition: transform 1200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        .slider__slide {
+            position: absolute;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            transition: transform 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition-delay: 600ms;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .slider__slide--active {
+            transform: translatex(0%);
+            z-index: 2;
+        }
+
+        .slider__slide--active .slider__wrap {
+            transform: translateX(0);
+            transform-origin: 100% 50%;
+            opacity: 1;
+            -webkit-animation: none;
+            animation: none;
+        }
+
+        .slider__slide--active .slider__back {
+            filter: blur(1.5vh);
+            transition: filter 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition-delay: 900ms !important;
+        }
+
+        .slider__slide--active .slider__inner {
+            transform: scale(0.8);
+            box-shadow: 0 1vh 6vh rgba(0, 0, 0, 0.2);
+            pointer-events: auto;
+            opacity: 1;
+            transition: transform 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86), box-shadow 900ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 1ms step-end;
+            transition-delay: 900ms;
+        }
+
+        .slider__slide--active .slider__content {
+            opacity: 1;
+            transition-delay: 1350ms;
+        }
+
+        .slider__slide:not(.slider__slide--active) .slider__wrap {
+            -webkit-animation-name: hack;
+            animation-name: hack;
+            -webkit-animation-duration: 900ms;
+            animation-duration: 900ms;
+            -webkit-animation-delay: 450ms;
+            animation-delay: 450ms;
+            -webkit-animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        @-webkit-keyframes hack {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(-100vw);
+                opacity: 1;
+            }
+
+            51% {
+                transform: translateX(-100vw);
+                opacity: 0;
+            }
+
+            52% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(100vw);
+                opacity: 1;
+            }
+        }
+
+        @keyframes hack {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(-100vw);
+                opacity: 1;
+            }
+
+            51% {
+                transform: translateX(-100vw);
+                opacity: 0;
+            }
+
+            52% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(100vw);
+                opacity: 1;
+            }
+        }
+
+        .slider__slide:nth-child(1) .slider__back,
+        .slider__slide:nth-child(1) .slider__inner {
+            background-image: url(../assets/img/sliderimg02.jpg);
+        }
+
+        .slider__slide:nth-child(2) .slider__back,
+        .slider__slide:nth-child(2) .slider__inner {
+            background-image: url(../assets/img/sliderimg03.jpg);
+        }
+
+        .slider__slide:nth-child(3) .slider__back,
+        .slider__slide:nth-child(3) .slider__inner {
+            background-image: url(../assets/img/sliderimg05.jpg);
+        }
+
+        .sig {
+            position: fixed;
+            bottom: 8px;
+            right: 8px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 100;
+            font-family: sans-serif;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            z-index: 9999;
+        }
+
+        .pauseButton {
+            margin-left: 6rem;
+            display: inline-block;
+            background-image: url(../assets/img/stop.svg);
+            width: 25px;
+            height: 25px;
+            z-index: 1000;
+            background-size: cover;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.753);
+            border-radius: 50%;
+            border: 1px solid var(--black200);
+            transition: all 0.3s;
+        }
+
+        .pauseButton:hover {
+            transform: scale(1.5);
+            background-color: #fff;
+        }
+
+        .resumeButton {
+            margin-left: 1rem;
+            display: inline-block;
+            background-image: url(../assets/img/play.svg);
+            width: 25px;
+            height: 25px;
+            z-index: 1000;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0.753);
+            border-radius: 50%;
+            border: 1px solid var(--black400);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .resumeButton svg {}
+
+        .resumeButton:hover {
+            transform: scale(1.5);
+            background-color: #fff;
+        }
+
+        #tagWrap {
+            height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            margin-bottom: 100px;
+        }
+
+        .intro__inner {
+            width: 100%;
+            height: 920px;
+            padding: 75px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .intro__text h3 {
+            text-align: center;
+        }
+
+        @media (max-width:660px) {
+            .slider__content h1 {
+                font-size: 2rem;
+            }
+
+            .pauseButton {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header id="header">
+        <a class="header__logo" href="main.html">
+            <h1></h1>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="main.html">
+                        <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 22L2 22" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M2 11L10.1259 4.49931C11.2216 3.62279 12.7784 3.62279 13.8741 4.49931L22 11"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path opacity="0.5"
+                                d="M15.5 5.5V3.5C15.5 3.22386 15.7239 3 16 3H18.5C18.7761 3 19 3.22386 19 3.5V8.5"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M4 22V9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M20 22V9.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                            <path opacity="0.5"
+                                d="M15 22V17C15 15.5858 15 14.8787 14.5607 14.4393C14.1213 14 13.4142 14 12 14C10.5858 14 9.87868 14 9.43934 14.4393C9 14.8787 9 15.5858 9 17V22"
+                                stroke="#1C274C" stroke-width="1.5" />
+                            <path opacity="0.5"
+                                d="M14 9.5C14 10.6046 13.1046 11.5 12 11.5C10.8954 11.5 10 10.6046 10 9.5C10 8.39543 10.8954 7.5 12 7.5C13.1046 7.5 14 8.39543 14 9.5Z"
+                                stroke="#1C274C" stroke-width="1.5" />
+                        </svg></a></li>
+                <li><a href="#">분리배출</a>
+                    <ul class="submenu">
+                        <li><a href="#">가구</a></li>
+                        <li><a href="#">가전</a></li>
+                        <li><a href="#">용기포장</a></li>
+                        <li><a href="#">패션잡화</a></li>
+                        <li><a href="#">음식물</a></li>
+                        <li><a href="#">기타</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">탄소발자국</a>
+                </li>
+                <li><a href="#">커뮤니티</a>
+                    <ul class="submenu">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">글보기</a></li>
+                        <li><a href="#">질문하기</a></li>
+                        <li><a href="#">1:1 질문</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">만든사람들</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__search">
+            <input type="text" placeholder="1. 용기분리배출">
+            <span class="search__zoom"></span>
+        </div>
+        <div class="header__login">
+            <button class="login__btn">
+                <span><a href="../html/login/login.html"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.5"
+                                d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"
+                                stroke="#1C274C" stroke-width="1.5" />
+                            <path
+                                d="M11 12C11 13.3807 9.88071 14.5 8.5 14.5C7.11929 14.5 6 13.3807 6 12C6 10.6193 7.11929 9.5 8.5 9.5C9.88071 9.5 11 10.6193 11 12Z"
+                                stroke="#1C274C" stroke-width="1.5" />
+                            <path d="M11 12H15.5M15.5 12H17C17.5523 12 18 12.4477 18 13V14M15.5 12V13.5"
+                                stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+                        </svg></a></span>
+                <a class="login__text" href="../html/login/login.html">Login</a>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="slider">
+            <div class="slider__slide slider__slide--active" data-slide="1">
+                <div class="slider__wrap">
+                    <div class="slider__back"></div>
+                </div>
+                <div class="slider__inner">
+                    <div class="slider__content">
+                        <h1>환경을 <br> 생각하고</h1><a class="go-to-next">next</a><br>
+                        <div class="pauseButton"></div>
+                        <div class="resumeButton"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__slide" data-slide="2">
+                <div class="slider__wrap">
+                    <div class="slider__back"></div>
+                </div>
+                <div class="slider__inner">
+                    <div class="slider__content">
+                        <div class="slider__content">
+                            <h1>지구를 <br> 살리고</h1><a class="go-to-next">next</a><br>
+                            <div class="pauseButton"></div>
+                            <div class="resumeButton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__slide" data-slide="3">
+                <div class="slider__wrap">
+                    <div class="slider__back"></div>
+                </div>
+                <div class="slider__inner">
+                    <div class="slider__content">
+                        <div class="slider__content">
+                            <h1>더나은 <br> 미래를 만든다</h1><a class="go-to-next">next</a><br>
+                            <div class="pauseButton"></div>
+                            <div class="resumeButton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__indicators"></div>
+        </div>
+        <!-- <div id="slider"> 
+            <div class="sliderWrap">
+                <div class="sliderimg">
+                    <img src="../assets/img/sliderimg01.png" alt>
+                    
+                    <div class="slider__text">
+                        <h2>clean earth</h2>
+                        <p>Green Support<br>
+                            Bright Tomorrow</p>
+                    </div>
+                </div>
+                <div class="sliderimg">
+                    <img src="../assets/img/sliderimg02.jpg" alt>
+                    <div class="slider__text">
+                    </div>
+                </div>
+                <div class="sliderimg">
+                    <img src="../assets/img/sliderimg03.jpg" alt>
+                    <div class="slider__text">
+                        <h2>clean earth</h2>
+                        <p>Green Support<br>
+                            Bright Tomorrow</p>
+                    </div>
+                </div>
+                <div class="sliderimg">
+                    <img src="../assets/img/sliderimg05.jpg" alt>
+                    <div class="slider__text">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="intro__inner">
+            <div class="introWrap container">
+                <div class="intro__text">
+                    <h3>이번주 BEST 이슈</h3>
+                    <p>이번주 가장 인기 있는 품목을 모아보아요.</p>
+                </div>
+                <section class="hero-section">
+                    <div class="card-grid">
+                        <a class="card" href="#">
+                            <div class="card__background"
+                                style="background-image: url(../assets/img/intro__inner01.jpg)"></div>
+                            <div class="card__content">
+                                <p class="card__category">Category</p>
+                                <h3 class="card__heading">대형가구</h3>
+                            </div>
+                        </a>
+                        <a class="card" href="#">
+                            <div class="card__background"
+                                style="background-image: url(../assets/img/intro__inner02.jpg)"></div>
+                            <div class="card__content">
+                                <p class="card__category">Category</p>
+                                <h3 class="card__heading">중형가구</h3>
+                            </div>
+                        </a>
+                        <a class="card" href="#">
+                            <div class="card__background"
+                                style="background-image: url(../assets/img/intro__inner03.jpg)"></div>
+                            <div class="card__content">
+                                <p class="card__category">Category</p>
+                                <h3 class="card__heading">중형가구</h3>
+                            </div>
+                        </a>
+                        <a class="card" href="#">
+                            <div class="card__background"
+                                style="background-image: url(../assets/img/intro__inner04.jpg)"></div>
+                            <div class="card__content">
+                                <p class="card__category">Category</p>
+                                <h3 class="card__heading">소형가구</h3>
+                            </div>
+                        </a>
+                        <div>
+                </section>
+            </div>
+        </div>
+
+        <div class="company__inner">
+            <div class="company__title">
+                <h3>소소한 나의 실천으로 함께 만들어가는 깨끗한 지구!</h3>
+            </div>
+            <div class="page2Wrap">
+                <div class="companyimgWrap">
+                    <div class="company__img">
+                        <img src="../assets/img/com11.png" alt="">
+                        <h2>Think</h2>
+                        <p>지구를 생각하고</p>
+                    </div>
+                    <div class="company__img">
+                        <img src="../assets/img/com12.png" alt="">
+                        <h2>Reuse</h2>
+                        <p>한번 더 사용하고</p>
+                    </div>
+                    <div class="company__img">
+                        <img src="../assets/img/com13.png" alt="">
+                        <h2>Recycle</h2>
+                        <p>올바르게 재활용하고</p>
+                    </div>
+                    <div class="company__img">
+                        <img src="../assets/img/com14.png" alt="">
+                        <h2>Recovery</h2>
+                        <p>지구의 에너지를 만들고!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main__page3">
+            <div class="page3__text">
+                <h4>자원 순환을 위해 앞장서는 기업</h4>
+                <p>기업의 다양한 친환경 활동을 소개합니다.</p>
+            </div>
+            <div class="companyWrap">
+                <div class="companyBox">
+                    <div class="dunkin"></div>
+                    <div class="company__text">
+                        친환경 포장재 전환<br>
+                        <em>11,504,919 개</em>
+                    </div>
+                    <div class="company__result">
+                        <div class="result1">
+                            <img src="../assets/img/result1.png">
+                            <h4>
+                                1,515그루<br>
+                                소나무 심은 효과
+                            </h4>
+                        </div>
+                        <span>=</span>
+                        <div class="result2">
+                            <img src="../assets/img/result2.png">
+                            <h4>
+                                13,771kg<br>
+                                탄소저감량
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="companyBox">
+                    <div class="nature"></div>
+                    <div class="company__text">
+                        패트병 생수 절감<br>
+                        <em>170,013,808 개</em>
+                    </div>
+                    <div class="company__result">
+                        <div class="result1">
+                            <img src="../assets/img/result1.png">
+                            <h4>
+                                20,893그루<br>
+                                소나무 심은 효과
+                            </h4>
+                        </div>
+                        <span>=</span>
+                        <div class="result2">
+                            <img src="../assets/img/result2.png">
+                            <h4>
+                                189,939kg<br>
+                                탄소저감량
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="companyBox">
+                    <div class="starbucks"></div>
+                    <div class="company__text">
+                        텀블러 사용하기<br>
+                        <em>98,994,105 건</em>
+                    </div>
+                    <div class="company__result">
+                        <div class="result1">
+                            <img src="../assets/img/result1.png">
+                            <h4>
+                                12,166그루<br>
+                                소나무 심은 효과
+                            </h4>
+                        </div>
+                        <span>=</span>
+                        <div class="result2">
+                            <img src="../assets/img/result2.png">
+                            <h4>
+                                110,596kg<br>
+                                탄소저감량
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="companyBox">
+                    <div class="baemin"></div>
+                    <div class="company__text">
+                        일회용품 덜쓰기<br>
+                        <em>17,296,352 명</em>
+                    </div>
+                    <div class="company__result">
+                        <div class="result1">
+                            <img src="../assets/img/result1.png">
+                            <h4>
+                                1,515그루<br>
+                                소나무 심은 효과
+                            </h4>
+                        </div>
+                        <span>=</span>
+                        <div class="result2">
+                            <img src="../assets/img/result2.png">
+                            <h4>
+                                13,771kg<br>
+                                탄소저감량
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="tagWrap">
+            <div class="tag__title">
+                <h1>카테고리별 쓰레기</h1>
+                <p>다양한 카테고리로 원하는 제품을 찾아보세요.</p>
+            </div>
+            <div class="tag__inner scroll style">
+                <div class="tagimgBox">
+                    <img src="../assets/img/fashion01.jpg" alt="img1">
+                    <h3>가구</h3>
+                    <p>대형생활폐기물 원목,합판,시트지 등의 <br>
+                        재질로 제작되어 재활용이 불가능<br>
+                        신고 및 수거는 <br>유료 2,000 ~ 10,000원 가량 부과
+                    </p>
+                </div>
+                <div class="tagimgBox">
+                    <img src="../assets/img/furniture1.jpg" alt="img2">
+                    <h3>패션</h3>
+                    <p>대형생활폐기물 원목,합판,시트지 등의 <br>
+                        재질로 제작되어 재활용이 불가능<br>
+                        신고 및 수거는 <br>유료 2,000 ~ 10,000원 가량 부과
+                    </p>
+                </div>
+                <div class="tagimgBox">
+                    <img src="../assets/img/plastic01.jpg" alt="img3">
+                    <h3>용기</h3>
+                    <p>대형생활폐기물 원목,합판,시트지 등의<br>
+                        재질로 제작되어 재활용이 불가능<br>
+                        신고 및 수거는 <br>유료 2,000 ~ 10,000원 가량 부과
+                    </p>
+                </div>
+                <div class="tagimgBox">
+                    <img src="../assets/img/plastic01.jpg" alt="img4">
+                    <h3>용기</h3>
+                    <p>대형생활폐기물 원목,합판,시트지 등의<br>
+                        재질로 제작되어 재활용이 불가능<br>
+                        신고 및 수거는 <br>유료 2,000 ~ 10,000원 가량 부과
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer" role="contentinfo">
+        <div class="footer__inner">
+            <div class="footerwrap">
+                <ul>
+                    <li><img src="../assets/img/logo2.jpg" alt="sitelogo"></li>
+                    <li>
+                        <h2>CUSTOMER CENTER</h2>
+                        <p>전화보다 빠른 궁금증 해결</p>
+                    </li>
+                    <li>
+                        <h2>NOTICE +</h2>
+                        <p>종량제 봉투 가격 인상 공지<br>
+                            2025 대기업 탄소 저감 실적 의무화 실시예정</p>
+                    </li>
+                    <li>
+                        <h2>about 분리배출</h2>
+                        <p>주소 : 서울특별시 구로구 구로동 237-14<br>
+                            통신판매업 신고 : 2015-서울구로-1525</p>
+                    </li>
+                    <li>
+                        <div class="footer__sns">
+                            <h1>SOCIAL</h1>
+                            <div>
+                                <img src="../assets/img/Facebook.png" alt="Facebook">
+                                <img src="../assets/img/Instagram.png" alt="Instagram">
+                                <img src="../assets/img/messanger.png" alt="messanger">
+                                <a href="/teamplemain/index2.html"><img src="../assets/img/Whatsapp.png"
+                                        alt="Whatsapp"></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        // window.onload = function(){
+        //     let currentIndex = 0; //현재 이미지
+        //     const sliderWrap = document.querySelector(".sliderWrap");   //전체 이미지 저장
+        //     const slider = document.querySelectorAll(".sliderimg");    //각각의 이미지
+        //     const sliderClone = sliderWrap.firstElementChild.cloneNode(true);   //첫번째 이미지 저장
+        //     sliderWrap.appendChild(sliderClone);    //이미지 마지막 영역에 추가
+
+        //     setInterval(() => {     //3초에 한번씩 실행
+        //         currentIndex++;     //현재 이미지 1씩 증가
+        //         sliderWrap.style.transition = "all 0.7s";   //애니메이션 효과 추가
+        //         sliderWrap.style.marginLeft = -currentIndex * 100 + "%";    //왼쪽으로 100%씩 이동
+
+        //         if(currentIndex == slider.length){
+        //             setTimeout(() => {
+        //                 sliderWrap.style.transition = "0s";     //애니메이션 효과 정지
+        //                 sliderWrap.style.marginLeft = "0";      //이미지 위치를 초기화
+
+        //                 currentIndex = 0;   //현재 이미지를 초기화
+        //             }, 700);
+        //         }
+        //     }, 3000);
+        // };
+        // 메뉴 
+        window.onload = function () {
+            let navList = document.querySelectorAll(".header__nav > ul > li");
+
+            navList.forEach(function (navItem) {
+                navItem.addEventListener("mouseover", function () {
+                    const submenu = this.querySelector(".submenu");
+                    submenu.style.height = submenu.scrollHeight + "px";
+                });
+            });
+            navList.forEach(function (navItem) {
+                navItem.addEventListener("mouseout", function () {
+                    this.querySelector(".submenu").style.height = "0px";
+                });
+            });
+        };
+
+        //슬라이드 
+        $(document).ready(function () {
+            for (var i = 1; i <= $('.slider__slide').length; i++) {
+                $('.slider__indicators').append('<div class="slider__indicator" data-slide="' + i + '"></div>')
+            }
+            setTimeout(function () {
+                $('.slider__wrap').addClass('slider__wrap--hacked');
+            }, 1000);
+
+            var isPaused = false; // 일시 중지 상태를 저장하는 변수
+
+            function goToSlide(number) {
+                $('.slider__slide').removeClass('slider__slide--active');
+                $('.slider__slide[data-slide=' + number + ']').addClass('slider__slide--active');
+            }
+
+            function autoSlide() {
+                if (!isPaused) { // isPaused가 false인 경우에만 슬라이드 전환
+                    var currentSlide = Number($('.slider__slide--active').data('slide'));
+                    var totalSlides = $('.slider__slide').length;
+                    currentSlide++;
+
+                    if (currentSlide > totalSlides) {
+                        currentSlide = 1;
+                    }
+                    goToSlide(currentSlide);
+                }
+            }
+
+            // 3초(3000ms)마다 autoSlide 함수를 호출하여 슬라이드를 변경
+            var autoSlideInterval = setInterval(autoSlide, 4000);
+
+            // 다음 슬라이드로 이동하는 클릭 핸들러
+            $('.slider__next, .go-to-next').on('click', function () {
+                var currentSlide = Number($('.slider__slide--active').data('slide'));
+                var totalSlides = $('.slider__slide').length;
+                currentSlide++;
+
+                if (currentSlide > totalSlides) {
+                    currentSlide = 1;
+                }
+                goToSlide(currentSlide);
+            });
+
+            // "일시 중지" 버튼 클릭 핸들러
+            $('.pauseButton').on('click', function () {
+                isPaused = true; // 슬라이드 일시 중지
+            });
+
+            // "다시 시작" 버튼 클릭 핸들러
+            $('.resumeButton').on('click', function () {
+                isPaused = false; // 슬라이드 다시 시작
+            });
+        });
+    </script>
+</body>
+
+</html>
