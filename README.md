@@ -10,6 +10,8 @@
  ### [사이트 바로가기📎](http://audgns722.dothome.co.kr/teamplemain/firstmain.php)
  ### [INDEX 바로가기📎](http://audgns722.dothome.co.kr/teamplemain/index.html)
 
+
+
 ## 🕰️ 개발 기간 및 작업 관리
 * 개발 기간: 2023년 10월 11일부터 2023년 11월 16일까지
 * 작업 관리: Slack과 Notion을 활용하여 팀 내에서 작업 현황을 공유 및 관리하였습니다.
