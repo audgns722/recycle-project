@@ -5,7 +5,7 @@
 ## 🖥️ 프로젝트 소개
 분리의신은 일상 생활 속에서 발생하는 잘못된 분리배출을 알려주고, 간편한 검색을 통해 올바른 배출 방법을 안내하는 웹사이트입니다.
 <br>
-<div align="center"><img style="border-radius:15px" width="70%" src="https://github.com/audgns722/recycle-project/blob/main/logic-recyclegod.jpg?raw=true"/></div>
+<div align="center"><img style="border-radius:15px" width="70%" src="https://github.com/audgns722/recycle-project/blob/main/recycleGodIntroImg.png?raw=true"/></div>
 
  ### [사이트 바로가기📎](http://audgns722.dothome.co.kr/teamplemain/firstmain.php)
  ### [INDEX 바로가기📎](http://audgns722.dothome.co.kr/teamplemain/index.html)
